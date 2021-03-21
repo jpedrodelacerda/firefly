@@ -11,6 +11,7 @@ fn format_conn_string(addr: String, port: String) -> String {
 fn connect_to_server(conn_string: String) -> io::Result<()> {
     let stream = TcpStream::connect(conn_string).unwrap();
     let mut codec = Codec::new(stream)?;
+	println!("{}", codec.read_message()?);
     let stdin = io::stdin();
     for line in stdin.lock().lines() {
         match line {
