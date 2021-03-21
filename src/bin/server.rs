@@ -4,6 +4,7 @@ use std::net::TcpListener;
 use firefly::Codec;
 
 fn start_listen(listener: TcpListener) -> io::Result<()> {
+	println!("Starting firefly server on {}", listener.local_addr()?);
     for stream in listener.incoming() {
         match stream {
             Ok(stream) => {
